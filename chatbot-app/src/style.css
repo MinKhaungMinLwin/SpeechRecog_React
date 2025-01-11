@@ -1,0 +1,66 @@
+/* src/style.css */
+body {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .app-container {
+    font-family: 'Arial', sans-serif;
+    margin-top: 50px;
+  }
+  
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  .chat-box {
+    overflow-y: auto;
+    height: 300px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+  }
+  
+  .user-msg {
+    color: #7f8c8d;
+  }
+  
+  .bot-msg {
+    color: #1abc9c;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  button {
+    width: 48%;
+  }
+  
+  .navbar {
+    background-color: #212121;
+  }
+  
+  .navbar-brand {
+    font-size: 20px;
+  }
+  
