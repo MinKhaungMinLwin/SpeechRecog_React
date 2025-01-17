@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ChatBox from './components/ChatBox';
 import VoiceInputButton from './components/VoiceInputButton';
-
+import { Container, Row, Col, Navbar, Button, Form, InputGroup } from 'react-bootstrap';
 import './style.css';
 
 const App = () => {
@@ -70,31 +70,55 @@ const App = () => {
   };
 
   return (
-    <div className="app-container">
-      <header className="navbar navbar-expand-lg bg-secondary-subtle sticky-top">
-        <div className="container-fluid">
-          <button className="navbar-brand text-info">Virtual Assistant</button>
-        </div>
-      </header>
+    <Container fluid className="app-container">
+      {/* Navbar */}
+      <Navbar bg="secondary-subtle" expand="lg" sticky="top" className="shadow-sm mb-3">
+        <Container className="navbar-container mx-auto d-flex justify-content-center w-100">
+          <Navbar.Brand className="text-info">Virtual Assistant</Navbar.Brand>
+        </Container>
+      </Navbar>
 
-      <div className="chat-container">
-        <ChatBox messages={messages} />
-        <div className="input-container">
-          <textarea
-            className="form-control"
-            rows="2"
-            placeholder="Type your message"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleUserInput(e.target.value);
-                e.target.value = '';
-              }
-            }}
-          ></textarea>
-          <div className="button-container">
-            <button
-              className="btn btn-outline-success"
+      {/* Chat and Input Container */}
+      <Container className="main-container">
+        {/* Chat Box */}
+        <Row>
+          <Col>
+            <div className="chat-box">
+              <ChatBox messages={messages} />
+            </div>
+          </Col>
+        </Row>
+
+        {/* Input and Buttons */}
+        <Row className="mt-3">
+          <Col>
+            <Form>
+              <InputGroup>
+                <Form.Control
+                  as="textarea"
+                  rows={2}
+                  className="form-control"
+                  placeholder="Type your message"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleUserInput(e.target.value);
+                      e.target.value = '';
+                    }
+                  }}
+                />
+              </InputGroup>
+            </Form>
+          </Col>
+        </Row>
+
+        {/* Button Row */}
+        <Row className="mt-3 justify-content-between">
+          <Col xs="auto" className="button-col">
+            <Button
+              variant="outline-success"
+              className="custom-button"
+              size="sm" // Adjust this to "lg" for larger buttons or "sm" for smaller ones
               onClick={() => {
                 const textarea = document.querySelector('textarea');
                 handleUserInput(textarea.value);
@@ -102,13 +126,22 @@ const App = () => {
               }}
             >
               Send
-            </button>
-            <VoiceInputButton onSpeak={handleVoiceInput} isListening={isListening} />
-          </div>
-        </div>
-      </div>
-    </div>
+            </Button>
+          </Col>
+          <Col xs="auto" className="button-col">
+            <Button
+              variant="outline-info"
+              className="custom-button"
+              size="sm" // Adjust this to "lg" or "sm"
+              onClick={handleVoiceInput}
+            >
+              {isListening ? 'Listening...' : 'Speak'}
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </Container>
   );
-};
+}
 
 export default App;

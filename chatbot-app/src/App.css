@@ -36,3 +36,52 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+/* General Layout */
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #2e3032; /* Optional background color */
+}
+
+.navbar-container {
+  max-width: 800px;
+}
+
+/* Main Content Container */
+.main-container {
+  max-width: 800px;
+  padding: 1.5rem;
+  margin: 0 auto;
+}
+
+/* Chat Box */
+.chat-box {
+  padding: 1.5rem;
+  background-color: #343a40;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  height: 60vh;
+  overflow-y: auto;
+}
+
+
+
+/* Ensure the columns don't shrink or affect the button size */
+.button-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;   /* Ensure it doesn't take more space than necessary */
+}
+
+/* Custom button size */
+.custom-button {
+  padding: 12px 24px;  /* Adjust padding */
+  font-size: 16px;      /* Font size */
+  height: auto;         /* Prevent height shrinkage */
+}
